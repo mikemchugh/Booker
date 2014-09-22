@@ -92,9 +92,9 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Booker\Booker.csproj">
+    <ProjectReference Include="..\Booker\Booker.WebUI.csproj">
       <Project>{C65567FE-A1BD-49E9-BE5E-348A0C370EB2}</Project>
-      <Name>Booker</Name>
+      <Name>Booker.WebUI</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
