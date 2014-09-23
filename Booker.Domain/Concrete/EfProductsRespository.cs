@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Repositories.Domain.Concrete
+namespace Booker.Domain.Concrete
 {
     public class EfProductsRespository : IProductsRepository
     {
@@ -15,7 +15,15 @@ namespace Repositories.Domain.Concrete
 
         public IQueryable<Product> Products
         {
-            get { return context.Products; }
+            get 
+            { 
+                return context.Products; 
+            }
+        }
+
+        public Product GetProduct(int id)
+        {
+            return Products.SingleOrDefault(x => x.Id == id);
         }
 
         public void SaveProduct(Product product)
@@ -38,7 +46,14 @@ namespace Repositories.Domain.Concrete
 
         public Product DeleteProduct(int productID)
         {
-            throw new NotImplementedException();
+            var dbProduct = context.Products.Find(productID);
+            if (dbProduct != null)
+            {
+                dbProduct.Active = false;
+                context.SaveChanges();
+            }
+
+            return dbProduct;
         }
     }
 }

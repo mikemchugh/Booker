@@ -11,6 +11,8 @@ namespace Booker.Domain.Interfaces
     {
         IQueryable<Product> Products { get; }
 
+        Product GetProduct(int id);
+
         void SaveProduct(Product product);
 
         Product DeleteProduct(int productID);
